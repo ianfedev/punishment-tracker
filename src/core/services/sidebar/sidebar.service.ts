@@ -1,4 +1,5 @@
-import {computed, effect, Injectable, Signal, signal, WritableSignal} from '@angular/core';
+import {computed, effect, Inject, Injectable, PLATFORM_ID, Signal, signal, WritableSignal} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class SidebarService {
    * @private minimum to allow collapse.
    */
   private readonly collapseAllowance: number = 768;
-  private _viewWidth: WritableSignal<number> = signal(window.innerWidth);
+  private _viewWidth: WritableSignal<number> = signal(this.collapseAllowance);
 
   /**
    * @private defines main control for shrinking and widening.
@@ -23,17 +24,24 @@ export class SidebarService {
    */
   private _canCollapse: Signal<boolean> = computed(() => this._viewWidth() > this.collapseAllowance);
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
 
+    console.log("DONDE ESTES");
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    this._viewWidth.set(window.innerWidth);
     window.addEventListener('resize', () => {
       this._viewWidth.set(window.innerWidth);
     });
 
     effect(() => {
-      if (!this.canCollapse) {
-        this.toggle(true);
+      if (!this.canCollapse && !this.isOpen) {
+        queueMicrotask(() => this.toggle(true));
       }
     });
+
 
   }
 
