@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, input, Input, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {NgClass} from '@angular/common';
 
 @Component({
