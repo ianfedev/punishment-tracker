@@ -1,0 +1,12 @@
+<section class="w-full bg-primary rounded-xl p-4 flex items-center justify-between">
+
+  <div class="flex items-center gap-5">
+    <i [class]="icon()" style="font-size: 1.5rem"></i>
+    <span class="text-md font-medium">{{ title() }}</span>
+  </div>
+
+  @if (showChevron()) {
+    <i class="pi" [ngClass]="expanded() ? 'pi-chevron-up' : 'pi-chevron-down'"></i>
+  }
+
+</section>

@@ -6,7 +6,11 @@ module.exports = {
     "./node_modules/primeng/**/*.{js,ts}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
+    },
   },
   plugins: [
     primeui
