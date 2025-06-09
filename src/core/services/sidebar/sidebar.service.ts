@@ -26,7 +26,6 @@ export class SidebarService {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
 
-    console.log("DONDE ESTES");
     if (!isPlatformBrowser(this.platformId)) {
       return;
     }

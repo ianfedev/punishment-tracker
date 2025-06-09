@@ -1,12 +1,12 @@
-import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
-import { provideServerRendering } from '@angular/platform-server';
-import { provideServerRouting } from '@angular/ssr';
-import { appConfig } from './app.config';
-import { serverRoutes } from './app.routes.server';
+import {ApplicationConfig, mergeApplicationConfig} from '@angular/core';
+import {provideServerRendering} from '@angular/platform-server';
+import {provideServerRouting} from '@angular/ssr';
+import {appConfig} from './app.config';
+import {serverRoutes} from './app.routes.server';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {providePrimeNG} from 'primeng/config';
 
-import Aura from '@primeng/themes/aura';
+import {preset} from '../themes/theme';
 
 const serverConfig: ApplicationConfig = {
   providers: [
@@ -15,7 +15,7 @@ const serverConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-        preset: Aura,
+        preset: preset,
       }
     })
   ]

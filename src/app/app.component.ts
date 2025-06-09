@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ButtonModule} from 'primeng/button';
 import {SidebarComponent} from '../layout/sidebar/sidebar.component';
 
